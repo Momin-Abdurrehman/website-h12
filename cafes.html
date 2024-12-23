@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>NUST H12 Navigator - Campus Cafes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f0f2f5;
+        }
+
+        .header {
+            background: #003366;
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav {
+            background: white;
+            padding: 1rem;
+            display: flex;
+            gap: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .cafes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cafe-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .cafe-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .cafe-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .cafe-details {
+            padding: 1.5rem;
+        }
+
+        .cafe-title {
+            font-size: 1.4rem;
+            color: #003366;
+            margin-bottom: 0.5rem;
+        }
+
+        .cafe-info {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cafe-rating {
+            color: #f0ad4e;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .menu-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #003366;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        .menu-button:hover {
+            background: #004488;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status.open {
+            background: #e6f4ea;
+            color: #137333;
+        }
+
+        .status.closed {
+            background: #fce8e6;
+            color: #c5221f;
+        }
+
+        .footer {
+            background: #002244;
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* Modal styles for menu */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .menu-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-section h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img alt="NUST Logo" src="https://crystalpng.com/wp-content/uploads/2022/02/national-university-logo.png" />
+        </div>
+        <h1>Campus Cafes</h1>
+    </header>
+    <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="buildings.html">Buildings</a>
+        <a href="directions.html">Directions</a>
+        <a href="events.html">Events</a>
+        <a href="cafes.html">Cafes</a>
+        <a href="about.html">About</a>
+    </nav>
+    <main class="main">
+        <div class="cafes-grid">
+            <!-- C1 Cafe -->
+            <div class="cafe-card">
+                <img alt="C1 Cafe" class="cafe-image" src="https://orientation.nust.edu.pk/gallery/c1aerial.jpg" />
+                <div class="cafe-details">
+                    <h3 class="cafe-title">C1 Cafe</h3>
+                    <div class="cafe-rating">★★★★☆</div>
+                    <p class="cafe-info">📍 Opposite NBS ground</p>
+                    <p class="cafe-info">⏰ 8:00 AM - 10:00 PM</p>
+                    <span class="status open">Open Now</span>
+                    <button class="menu-button">View Menu</button>
+                </div>
+            </div>
+            <!-- C2 Cafe -->
+            <div class="cafe-card">
+                <img alt="C2 Cafe" class="cafe-image"
+                    src="https://lh3.googleusercontent.com/p/AF1QipOdleda6DdSoIgJn0Zrv2X5LBb_p2Mq9zRNEXg=s1360-w1360-h1020" />
+                <div class="cafe-details">
+                    <h3 class="cafe-title">C2 Cafe</h3>
+                    <div class="cafe-rating">★★★★★</div>
+                    <p class="cafe-info">📍 Opposite IAEC</p>
+                    <p class="cafe-info">⏰ 8:30 AM - 10:00 PM</p>
+                    <span class="status open">Open Now</span>
+                    <button class="menu-button">View Menu</button>
+                </div>
+            </div>
+            <!-- C3 Cafe -->
+            <div class="cafe-card">
+                <img alt="C3 Cafe" class="cafe-image"
+                    src="https://lh3.googleusercontent.com/p/AF1QipNSLDGEZ9akkP62reEl9kt7YEeq_Dtf-FH9WNtL=s1360-w1360-h1020" />
+                <div class="cafe-details">
+                    <h3 class="cafe-title">C3 Cafe</h3>
+                    <div class="cafe-rating">★★★★☆</div>
+                    <p class="cafe-info">📍 Opposite Main Office</p>
+                    <p class="cafe-info">⏰ 9:00 AM - 10:00 PM</p>
+                    <span class="status open">Open Now</span>
+                    <button class="menu-button">View Menu</button>
+                </div>
+            </div>
+            <!-- Retro -->
+            <div class="cafe-card">
+                <img alt="Retro" class="cafe-image"
+                    src="https://lh3.googleusercontent.com/p/AF1QipN6oahOlH57eVxXMAVu19y5KAJ8y_5RNa7kWN0c=s1360-w1360-h1020" />
+                <div class="cafe-details">
+                    <h3 class="cafe-title">Retro</h3>
+                    <div class="cafe-rating">★★★★☆</div>
+                    <p class="cafe-info">📍 Near boys hostel</p>
+                    <p class="cafe-info">⏰ 8:00 AM - 11:00 PM</p>
+                    <span class="status closed">Closed</span>
+                    <button class="menu-button">View Menu</button>
+                </div>
+            </div>
+            <!-- Coffee Lounge -->
+            <div class="cafe-card">
+                <img alt="Coffee Lounge" class="cafe-image"
+                    src="https://lh3.googleusercontent.com/p/AF1QipMGKdku4UR4bLg_qepHzHzBdlYy8U-FAwaq5ALB=s1360-w1360-h1020" />
+                <div class="cafe-details">
+                    <h3 class="cafe-title">Coffee Lounge</h3>
+                    <div class="cafe-rating">★★★★★</div>
+                    <p class="cafe-info">📍 Opposite C1</p>
+                    <p class="cafe-info">⏰ 9:00 AM - 9:00 PM</p>
+                    <span class="status open">Open Now</span>
+                    <button class="menu-button">View Menu</button>
+                </div>
+            </div>
+            <!-- C4 Cafe -->
+            <div class="cafe-card">
+                <img alt="C4 Cafe" class="cafe-image"
+                    src="https://lh3.googleusercontent.com/p/AF1QipMaphWFJ3R4cOAM6_-04DfFGi25uyA0K3WhCNpo=s1360-w1360-h1020" />
+                <div class="cafe-details">
+                    <h3 class="cafe-title">C4 Cafe</h3>
+                    <div class="cafe-rating">★★★★☆</div>
+                    <p class="cafe-info">📍 NBS Building</p>
+                    <p class="cafe-info">⏰ 8:00 AM - 7:00 PM</p>
+                    <span class="status closed">Closed</span>
+                    <button class="menu-button">View Menu</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Menu Modal -->
+    <div class="modal" id="menuModal">
+        <div class="modal-content">
+            <h2>Cafe Menu</h2>
+            <div class="menu-section">
+                <h3>Beverages</h3>
+                <div class="menu-item">
+                    <span>Regular Tea</span>
+                    <span>Rs. 50</span>
+                </div>
+                <div class="menu-item">
+                    <span>Coffee</span>
+                    <span>Rs. 150</span>
+                </div>
+                <div class="menu-item">
+                    <span>Cold Drink</span>
+                    <span>Rs. 80</span>
+                </div>
+            </div>
+            <div class="menu-section">
+                <h3>Fast Food</h3>
+                <div class="menu-item">
+                    <span>Burger</span>
+                    <span>Rs. 200</span>
+                </div>
+                <div class="menu-item">
+                    <span>Sandwich</span>
+                    <span>Rs. 150</span>
+                </div>
+                <div class="menu-item">
+                    <span>Roll</span>
+                    <span>Rs. 120</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2024 NUST H12 Navigator | Contact: support@nust-navigator.edu.pk</p>
+    </footer>
+</body>
+
+</html>
